@@ -10,6 +10,8 @@ function init () {
 		controls: []
     });
 	myCar = new ymaps.Placemark([53.508599, 49.419078]); 
+	var actualProvider = new ymaps.traffic.provider.Actual({}, { infoLayerShown: true });
+	actualProvider.setMap(myMap);
 //*****************************************СОЗДАНИЕ*****************************************************//		
 //*****************************************ГЕОПОЗИЦИЯ*****************************************************//	
 	function geo_success(position) {
@@ -17,8 +19,8 @@ function init () {
         myCar = new ymaps.Placemark([position.coords.latitude, position.coords.longitude], {
             balloonContent: 'Тут должна быть машинка'
         }, {
-            preset: 'islands#circleIcon',
-            iconColor: '#3caa3c'
+            preset: 'islands#circleDotIcon',
+            iconColor: 'ff0000'
         });	
 		myMap.geoObjects.add(myCar);	
 		//myMap.setCenter([position.coords.latitude, position.coords.longitude]);		
