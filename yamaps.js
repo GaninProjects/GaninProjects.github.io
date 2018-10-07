@@ -7,17 +7,22 @@ function init () {
 	
     myMap = new ymaps.Map('map', {
         center: [53.508599, 49.419078],
-        zoom: 10
+        zoom: 14
     }, {
         //searchControlProvider: 'yandex#search'
     });
+	myCar = new ymaps.Placemark([53.508599, 49.419078]); 
 	
 	function geo_success(position) {
-		var myCollection = new ymaps.GeoObjectCollection();
-		myCollection.removeAll();
-        var myPlacemark = new ymaps.Placemark(position.coords.latitude, position.coords.longitude); 
-        myCollection.add(myPlacemark); 
-        myMap.geoObjects.add(myCollection);
+		myMap.geoObjects.remove(myCar);
+        myCar = new ymaps.Placemark([position.coords.latitude, position.coords.longitude], {
+            balloonContent: 'Тут должна быть машинка'
+        }, {
+            preset: 'islands#circleIcon',
+            iconColor: '#3caa3c'
+        });	
+		myMap.geoObjects.add(myCar);	
+		myMap.setCenter([position.coords.latitude, position.coords.longitude]);		
 	}
 
 	function geo_error() {
