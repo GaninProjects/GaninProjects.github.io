@@ -1,18 +1,17 @@
 var myMap;
 
-// Дождёмся загрузки API и готовности DOM.
 ymaps.ready(init);
 
 function init () {
-	
+//*****************************************СОЗДАНИЕ*****************************************************//		
     myMap = new ymaps.Map('map', {
         center: [53.508599, 49.419078],
-        zoom: 14
-    }, {
-        //searchControlProvider: 'yandex#search'
+        zoom: 10,
+		controls: []
     });
 	myCar = new ymaps.Placemark([53.508599, 49.419078]); 
-	
+//*****************************************СОЗДАНИЕ*****************************************************//		
+//*****************************************ГЕОПОЗИЦИЯ*****************************************************//	
 	function geo_success(position) {
 		myMap.geoObjects.remove(myCar);
         myCar = new ymaps.Placemark([position.coords.latitude, position.coords.longitude], {
@@ -22,7 +21,7 @@ function init () {
             iconColor: '#3caa3c'
         });	
 		myMap.geoObjects.add(myCar);	
-		myMap.setCenter([position.coords.latitude, position.coords.longitude]);		
+		//myMap.setCenter([position.coords.latitude, position.coords.longitude]);		
 	}
 
 	function geo_error() {
@@ -34,6 +33,6 @@ function init () {
 	  maximumAge        : 30000, 
 	  timeout           : 27000
 	};
-
-	var wpid = navigator.geolocation.watchPosition(geo_success, geo_error, geo_options);			
+	var wpid = navigator.geolocation.watchPosition(geo_success, geo_error, geo_options);	
+//*****************************************ГЕОПОЗИЦИЯ*****************************************************//		
 }
