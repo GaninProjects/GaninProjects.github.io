@@ -6,7 +6,7 @@ ymaps.ready(init);
 function init () {
 	
 	function geo_success(position) {
-	  alert(position.coords.latitude, position.coords.longitude);
+	  //alert(position.coords.latitude, position.coords.longitude);
 	}
 
 	function geo_error() {
