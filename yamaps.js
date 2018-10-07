@@ -15,7 +15,7 @@ function init () {
 	function geo_success(position) {
 		var myCollection = new ymaps.GeoObjectCollection();
 		myCollection.removeAll();
-        var myPlacemark = new ymaps.Placemark(position); 
+        var myPlacemark = new ymaps.Placemark(position.coords.latitude, position.coords.longitude); 
         myCollection.add(myPlacemark); 
         myMap.geoObjects.add(myCollection);
 	}
