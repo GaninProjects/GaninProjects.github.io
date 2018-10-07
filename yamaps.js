@@ -13,13 +13,14 @@ function init () {
     });
 	
 	function geo_success(position) {
-	  //alert(position.coords.latitude, position.coords.longitude);
-        myMap.geoObjects.add(new ymaps.Placemark([position.coords.latitude, position.coords.longitude], {
-            balloonContent: 'цвет <strong>влюбленной жабы</strong>'
+		myCar.removeAll();
+        myCar = new ymaps.Placemark([position.coords.latitude, position.coords.longitude], {
+            balloonContent: 'Тут должна быть машинка'
         }, {
             preset: 'islands#circleIcon',
             iconColor: '#3caa3c'
-        }))	  
+        });	
+		myMap.geoObjects.add(myCar);		
 	}
 
 	function geo_error() {
