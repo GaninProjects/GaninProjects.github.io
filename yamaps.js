@@ -14,7 +14,7 @@ function init () {
 	
 	function geo_success(position) {
 		var myCar = null;
-		myCar.removeAll();
+		myMap.geoObjects.remove(myCar);
         myCar = new ymaps.Placemark([position.coords.latitude, position.coords.longitude], {
             balloonContent: 'Тут должна быть машинка'
         }, {
