@@ -13,7 +13,8 @@ function init () {
     });
 	
 	function geo_success(position) {
-		myCar.removeAll();
+		var myCar = null;
+		//myCar.removeAll();
         myCar = new ymaps.Placemark([position.coords.latitude, position.coords.longitude], {
             balloonContent: 'Тут должна быть машинка'
         }, {
