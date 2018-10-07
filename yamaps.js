@@ -5,8 +5,21 @@ ymaps.ready(init);
 
 function init () {
 	
+    myMap = new ymaps.Map('map', {
+        center: [53.508599, 49.419078],
+        zoom: 10
+    }, {
+        //searchControlProvider: 'yandex#search'
+    });
+	
 	function geo_success(position) {
 	  //alert(position.coords.latitude, position.coords.longitude);
+        myMap.geoObjects.add(new ymaps.Placemark([position.coords.latitude, position.coords.longitude], {
+            balloonContent: 'цвет <strong>влюбленной жабы</strong>'
+        }, {
+            preset: 'islands#circleIcon',
+            iconColor: '#3caa3c'
+        }))	  
 	}
 
 	function geo_error() {
@@ -19,16 +32,5 @@ function init () {
 	  timeout           : 27000
 	};
 
-	var wpid = navigator.geolocation.watchPosition(geo_success, geo_error, geo_options);		
-	
-    // Создание экземпляра карты и его привязка к контейнеру с
-    // заданным id ("map").
-    myMap = new ymaps.Map('map', {
-        // При инициализации карты обязательно нужно указать
-        // её центр и коэффициент масштабирования.
-        center: [position.coords.latitude, position.coords.longitude], // Москва
-        zoom: 10
-    }, {
-        searchControlProvider: 'yandex#search'
-    });
+	var wpid = navigator.geolocation.watchPosition(geo_success, geo_error, geo_options);			
 }
