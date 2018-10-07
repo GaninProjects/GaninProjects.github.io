@@ -20,7 +20,7 @@ function init () {
             balloonContent: 'Тут должна быть машинка'
         }, {
             preset: 'islands#circleDotIcon',
-            iconColor: 'ff0000'
+            iconColor: '#ff0000'
         });	
 		myMap.geoObjects.add(myCar);	
 		//myMap.setCenter([position.coords.latitude, position.coords.longitude]);		
