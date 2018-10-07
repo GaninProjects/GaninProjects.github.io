@@ -13,15 +13,11 @@ function init () {
     });
 	
 	function geo_success(position) {
-		var myCar = null;
-		myMap.geoObjects.remove(myCar);
-        myCar = new ymaps.Placemark([position.coords.latitude, position.coords.longitude], {
-            balloonContent: 'Тут должна быть машинка'
-        }, {
-            preset: 'islands#circleIcon',
-            iconColor: '#3caa3c'
-        });	
-		myMap.geoObjects.add(myCar);		
+		var myCollection = new ymaps.GeoObjectCollection();
+		myCollection.removeAll();
+        var myPlacemark = new ymaps.Placemark(position); 
+        myCollection.add(myPlacemark); 
+        myMap.geoObjects.add(myCollection);
 	}
 
 	function geo_error() {
